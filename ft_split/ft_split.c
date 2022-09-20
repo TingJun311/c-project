@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 
@@ -11,7 +10,7 @@ unsigned int malloc_count(char *str)
 	{
 		if (*str == 32 || (*str >= 9 && *str <= 13))
 			c++;
-		while (*str && (*str == 32 || (*str >= 9 && *str <= 12)))
+		while (*str && (*str == 32 || (*str >= 9 && *str <= 13)))
 			str++;
 		str++;
 	}
@@ -41,6 +40,11 @@ char	**ft_split(char *str)
 		str++;
 	c = malloc_count(str);
 	matrix = (char **)malloc(sizeof(char *) * (c + 1));
+	if (matrix == NULL || c == 0)
+	{
+		free(matrix);
+		return (NULL);
+	}
 	oc = 0;
 	while (oc < c)
 	{
