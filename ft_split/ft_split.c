@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <unistd.h>
+#include <stdio.h>
 
 unsigned int malloc_count(char *str)
 {
@@ -24,9 +25,19 @@ unsigned int count_word(char *str)
 	unsigned int	i;
 
 	i = 0;
-	while (str[i] && (str[i] != 32 || !(str[i] >= 9 && str[i] <= 32)))
+	while (str[i] && (str[i] != 32 || !(str[i] >= 9 && str[i] <= 13)))
 		i++;
 	return (i);
+}
+
+unsigned int count(char	*str)
+{
+	unsigned int j;
+
+	j = 0;
+	while(str[j])
+		j++;
+	return (j);
 }
 
 char	**ft_split(char *str)
@@ -64,6 +75,7 @@ char	**ft_split(char *str)
 			str++;
 		oc++;
 	}
+	matrix[oc] = '\0';
 	return (matrix);
 }
 
@@ -95,6 +107,7 @@ int	main(int ac, char **av)
 		free(str);
 
 	}
-	write(1, "\n", 1);	
+	else
+		write(1, "\n", 1);	
 	return (0);
 }
